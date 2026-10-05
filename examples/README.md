@@ -2,13 +2,22 @@
 
 The `ballerinax/ebay.browse` connector provides practical examples illustrating usage in various scenarios.
 
-[//]: # (TODO: Add examples)
-1. 
-2. 
+1. **[Price comparison report](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/price_comparison_report)** - Search for a product, fetch the details of the cheapest listings and print a price report.
+
+2. **[Legacy item compatibility](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/legacy_item_compatibility)** - Resolve a legacy item ID, list the variations of its item group and check its compatibility with a product.
 
 ## Prerequisites
 
-[//]: # (TODO: Add prerequisites)
+1. Create an eBay application keyset to authenticate the connector as described in the [Setup guide](https://central.ballerina.io/ballerinax/ebay.browse/latest#setup-guide).
+
+2. For each example, create a `Config.toml` file with the related configuration. Here's an example of how your Config.toml file should look:
+
+```toml
+clientId = "<client-id>"
+clientSecret = "<client-secret>"
+```
+
+Each example lists the additional values it needs in its own README.
 
 ## Running an example
 
