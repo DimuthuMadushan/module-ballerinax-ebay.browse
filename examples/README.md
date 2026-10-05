@@ -2,7 +2,7 @@
 
 The `ballerinax/ebay.browse` connector provides practical examples illustrating usage in various scenarios.
 
-1. **[Price comparison report](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/price_comparison_report)** - Search for a product, fetch the details of the cheapest listings and print a price report.
+1. **[Price comparison report](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/price_comparison_report)** - Search for a product and print a price report of the cheapest listings.
 
 2. **[Legacy item compatibility](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/legacy_item_compatibility)** - Resolve a legacy item ID, list the variations of its item group and check its compatibility with a product.
 

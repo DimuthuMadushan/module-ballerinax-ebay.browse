@@ -16,13 +16,20 @@ Create a `Config.toml` file in this example's directory with the following conte
 clientId = "<client-id>"
 clientSecret = "<client-secret>"
 legacyItemId = "<legacy-item-id>"
+# For a multi-variation listing, set one of these to pick the variation. If both are empty,
+# the legacy ID is looked up as an item group and its first variation is used.
+legacyVariationId = ""
+legacyVariationSku = ""
 marketplaceId = "EBAY_US"
-compatibilityYear = "<year, e.g. 2018>"
-compatibilityMake = "<make, e.g. Toyota>"
-compatibilityModel = "<model, e.g. Camry>"
+compatibilityYear = "2018"
+compatibilityMake = "Toyota"
+compatibilityModel = "Camry"
+compatibilityTrim = "LE Sedan 4-Door"
+compatibilityEngine = "2.5L 2487CC l4 GAS DOHC Naturally Aspirated"
+compatibilitySubmodel = ""
 ```
 
-The item must belong to a category that supports compatibility checks, such as vehicle parts.
+The item must belong to a category that supports compatibility checks, such as vehicle parts. On `EBAY_US`, cars and trucks need `Year`, `Make`, `Model`, `Trim` and `Engine`; motorcycles need `Year`, `Make`, `Model` and `Submodel`. Empty values are left out of the request.
 
 ## Run the example
 

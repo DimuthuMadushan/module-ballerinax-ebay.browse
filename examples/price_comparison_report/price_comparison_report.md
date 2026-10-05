@@ -1,6 +1,6 @@
 # Price comparison report
 
-This example searches eBay for fixed-price listings of a product, sorted by price, fetches the full details of the cheapest matches in a single call and prints a short price report with each item's title, condition, price and seller.
+This example searches eBay for fixed-price listings of a product, sorted by price, and prints a short price report of the cheapest matches with each item's title, condition, price and seller.
 
 ## Prerequisites
 

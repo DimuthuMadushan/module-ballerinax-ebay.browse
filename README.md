@@ -12,13 +12,13 @@ The eBay Browse connector lets Ballerina applications search eBay listings by ke
 
 ## Setup guide
 
-To use the eBay Browse connector, you need an eBay developer account and an application keyset. If you do not have an eBay developer account, you can sign up for one [here](https://developer.ebay.com/signin).
+To use the eBay Browse connector, you need an eBay developer account and an application keyset. If you do not have an eBay developer account, you can sign up through the [eBay Developer Program signup](https://developer.ebay.com/signin).
 
 ### Step 1: Create an application keyset
 
 1. Sign in to the [eBay Developer Program](https://developer.ebay.com/) and open **Application Keys** from your account menu.
 
-2. Create a keyset for the **Production** environment (or **Sandbox** for testing).
+2. Create a keyset for the **Production** environment. The connector targets the Production endpoints (`https://api.ebay.com/buy/browse/v1` and its token URL) by default, so the quickstart below uses Production credentials only.
 
 3. Note down the **App ID (Client ID)** and the **Cert ID (Client Secret)** of the keyset.
 
@@ -83,7 +83,7 @@ bal run
 
 The eBay Browse connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/), covering the following use cases:
 
-1. [Price comparison report](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/price_comparison_report) - Search for a product, fetch the details of the cheapest listings and print a price report.
+1. [Price comparison report](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/price_comparison_report) - Search for a product and print a price report of the cheapest listings.
 
 2. [Legacy item compatibility](https://github.com/ballerina-platform/module-ballerinax-ebay.browse/tree/main/examples/legacy_item_compatibility) - Resolve a legacy item ID, list the variations of its item group and check its compatibility with a product.
 

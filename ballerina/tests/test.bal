@@ -43,6 +43,10 @@ function initClient() returns error? {
 }
 
 final string testItemId = "v1|110554118437|0";
+// Compatibility checks need an item in a parts category; the live run reads one from the environment.
+final string compatibilityItemId = isLiveServer ? os:getEnv("EBAY_COMPATIBILITY_ITEM_ID") : testItemId;
+// A complete 1x1 PNG image, Base64-encoded.
+const SAMPLE_IMAGE = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
 
 @test:Config {groups: ["live_tests", "mock_tests"]}
 function testSearchItems() returns error? {
@@ -54,7 +58,7 @@ function testSearchItems() returns error? {
 
 @test:Config {groups: ["live_tests", "mock_tests"]}
 function testSearchItemsByImage() returns error? {
-    SearchPagedCollection response = check ebay->searchItemsByImage({contentType: "application/json"}, {image: "iVBORw0KGgo="}, {});
+    SearchPagedCollection response = check ebay->searchItemsByImage({contentType: "application/json"}, {image: SAMPLE_IMAGE}, {});
     test:assertTrue((response.itemSummaries ?: []).length() > 0);
 }
 
@@ -86,9 +90,17 @@ function testGetItemsByItemGroup() returns error? {
 @test:Config {groups: ["live_tests", "mock_tests"]}
 function testCheckCompatibility() returns error? {
     CompatibilityResponse response = check ebay->checkCompatibility(
-        testItemId,
+        compatibilityItemId,
         {contentType: "application/json", xEBAYCMARKETPLACEID: "EBAY_US"},
-        {compatibilityProperties: [{name: "Year", value: "2018"}, {name: "Make", value: "Toyota"}]}
+        {
+            compatibilityProperties: [
+                {name: "Year", value: "2018"},
+                {name: "Make", value: "Toyota"},
+                {name: "Model", value: "Camry"},
+                {name: "Trim", value: "LE Sedan 4-Door"},
+                {name: "Engine", value: "2.5L 2487CC l4 GAS DOHC Naturally Aspirated"}
+            ]
+        }
     );
     test:assertTrue(response.compatibilityStatus is string);
 }

@@ -1,4 +1,4 @@
-// Searches eBay for a product, then fetches full details for the cheapest matches to build a price report.
+// Searches eBay for a product and prints a price report of the cheapest matching listings.
 
 import ballerina/io;
 import ballerinax/ebay.browse;
@@ -33,21 +33,8 @@ public function main() returns error? {
     }
     io:println(string `Found ${results.total ?: summaries.length()} listings, reporting on ${summaries.length()}`);
 
-    // Step 2: Fetch the full details of the matches in a single call.
-    string[] itemIds = [];
-    foreach browse:ItemSummary summary in summaries {
-        string? itemId = summary.itemId;
-        if itemId is string {
-            itemIds.push(itemId);
-        }
-    }
-    browse:Items details = check ebay->getItems(
-        {xEBAYCMARKETPLACEID: marketplaceId},
-        {itemIds: string:'join(",", ...itemIds)}
-    );
-
-    // Step 3: Print the report.
-    foreach browse:CoreItem item in details.items ?: [] {
+    // Step 2: Print the report from the search summaries.
+    foreach browse:ItemSummary item in summaries {
         browse:ConvertedAmount? price = item.price;
         string priceText = price is browse:ConvertedAmount ? string `${price.value ?: "?"} ${price.currency ?: ""}` : "n/a";
         string sellerText = item.seller?.username ?: "unknown seller";
